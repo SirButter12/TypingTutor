@@ -3,7 +3,10 @@ package com.programacion3.typingtutor;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -14,11 +17,28 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
-
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(new StackPane(label), 640, 480);
+        BorderPane root = new BorderPane();
+        VBox top = new VBox();
+        Label title = new Label("Typing tutor");
+        top.getChildren().add(title);
+        root.setTop(title);
+    
+        VBox center = new VBox();
+        StackPane sampleTextSection = new StackPane();
+        GridPane letters = new GridPane();
+        GridPane marker = new GridPane();
+        
+        sampleTextSection.getChildren().add(marker);
+        sampleTextSection.getChildren().add(letters);
+        
+        
+        center.getChildren().add(sampleTextSection);
+        GridPane virtualKeyBoard = new GridPane();
+        center.getChildren().add(virtualKeyBoard);
+        
+        root.setCenter(center);
+        
+        Scene scene = new Scene(root, 640, 480);
         stage.setScene(scene);
         stage.show();
     }
