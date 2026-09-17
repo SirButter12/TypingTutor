@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 
@@ -20,22 +21,31 @@ public class App extends Application {
         BorderPane root = new BorderPane();
         VBox top = new VBox();
         Label title = new Label("Typing tutor");
-        top.getChildren().add(title);
-        root.setTop(title);
     
         VBox center = new VBox();
         StackPane sampleTextSection = new StackPane();
-        GridPane lettersSection = new GridPane();
-        GridPane markerSection = new GridPane();
+        GridPane lettersLayer = new GridPane();
+        GridPane markerLayer = new GridPane();
         
-        sampleTextSection.getChildren().add(markerSection);
-        sampleTextSection.getChildren().add(lettersSection);
-        
-        
+        Rectangle marker = new Rectangle(30, 30);
+        markerLayer.add(marker, 0, 0);
+       
         center.getChildren().add(sampleTextSection);
-        GridPane virtualKeyBoard = new GridPane();
-        center.getChildren().add(virtualKeyBoard);
+        StackPane virtualKeyBoardSection = new StackPane();
+        GridPane instructionLayer = new GridPane();
+        GridPane pressedKeyLayer = new GridPane();
+        GridPane keyBoardLayer = new GridPane();
         
+        top.getChildren().add(title);
+        
+        sampleTextSection.getChildren().add(markerLayer);
+        sampleTextSection.getChildren().add(lettersLayer);
+        
+        virtualKeyBoardSection.getChildren().add(instructionLayer);
+        virtualKeyBoardSection.getChildren().add(pressedKeyLayer);
+        virtualKeyBoardSection.getChildren().add(keyBoardLayer);
+        
+        root.setTop(title);
         root.setCenter(center);
         
         Scene scene = new Scene(root, 640, 480);
