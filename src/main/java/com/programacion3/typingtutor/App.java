@@ -18,7 +18,8 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
-
+    public static String textToType = "asdadasdsgsadgfhsdadfadgshdgbhf";
+    
     @Override
     public void start(Stage stage) {
         BorderPane root = new BorderPane();
@@ -32,23 +33,12 @@ public class App extends Application {
         GridPane lettersLayer = new GridPane();
         GridPane markerLayer = new GridPane();
         
-        String textToType = "asdadasdsgsadgfhsdadfadgshdgbhf";
-        
-        for (int i = 0; i < 20; i++) {
-            ColumnConstraints column = new ColumnConstraints(30, 30, 30);
-            lettersLayer.getColumnConstraints().add(column);
-        }
-        
-        for (int i = 0; i < (textToType.length() / 20); i++) {
-            RowConstraints row = new RowConstraints(30, 30, 30);
-            lettersLayer.getRowConstraints().add(row);
-        }
-        
-        
         distributeString(textToType, lettersLayer);
+        formatLayers(markerLayer);
+        formatLayers(lettersLayer);
         
         Rectangle marker = new Rectangle(30, 30);
-        markerLayer.add(marker, 0, 0);
+        markerLayer.add(marker, 0, 1);
        
         center.getChildren().add(sampleTextSection);
         StackPane virtualKeyBoardSection = new StackPane();
@@ -91,6 +81,18 @@ public class App extends Application {
             letters.add(new Label(txt.substring(i, i + 1)), column, row);
             
             column++;
+        }
+    }    
+    
+    public static void formatLayers(GridPane gridPane) {
+        for (int i = 0; i < 20; i++) {
+            ColumnConstraints column = new ColumnConstraints(30, 30, 30);
+            gridPane.getColumnConstraints().add(column);
+        }
+        
+        for (int i = 0; i < (textToType.length() / 20); i++) {
+            RowConstraints row = new RowConstraints(30, 30, 30);
+            gridPane.getRowConstraints().add(row);
         }
     }    
 }
