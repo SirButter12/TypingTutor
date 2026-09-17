@@ -25,11 +25,11 @@ public class App extends Application {
     
         VBox center = new VBox();
         StackPane sampleTextSection = new StackPane();
-        GridPane letters = new GridPane();
-        GridPane marker = new GridPane();
+        GridPane lettersSection = new GridPane();
+        GridPane markerSection = new GridPane();
         
-        sampleTextSection.getChildren().add(marker);
-        sampleTextSection.getChildren().add(letters);
+        sampleTextSection.getChildren().add(markerSection);
+        sampleTextSection.getChildren().add(lettersSection);
         
         
         center.getChildren().add(sampleTextSection);
