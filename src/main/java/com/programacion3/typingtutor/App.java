@@ -131,6 +131,8 @@ public class App extends Application {
             if (key.equals("\n")){
                 row++;
                 column = 0;
+                
+                continue;
             }
             
             keyBoardLayer.add(new Label(key), column, row);
