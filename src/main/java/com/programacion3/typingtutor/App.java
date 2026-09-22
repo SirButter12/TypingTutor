@@ -31,14 +31,16 @@ public class App extends Application {
             "1","2","3","4","5", "6", "7", "8", "9", "0", "\n"
             ,"tab" , "q", "w", "e", "r", "t", "y", "u", "i" , "o", "p","tab" ,"\n"
             ,"shift", "a", "s", "d", "f", "g", "h", "j", "k" , "l", ";","shift" ,"\n"
-            ,"alt" , "z", "x", "c", "v", "b", "n", "m", "," , ".", "/","alt"
+            ,"alt" , "z", "x", "c", "v", "b", "n", "m", "," , ".", "/","alt" ,"\n",
+            "spc"
     ));
     
     public static List<String> shiftKeys = new ArrayList<>(List.of(
             "!","@","#","$","%", "^", "&", "*", "(", ")", "\n"
             ,"tab" , "Q", "W", "E", "R", "T", "Y", "U", "I" , "O", "P","tab" ,"\n"
             ,"shift" , "A", "S", "D", "F", "G", "H", "J", "K" , "L", ":","shift" ,"\n"
-            ,"alt" ,"Z", "X", "C", "V", "B", "N", "M", "<" , ">", "?","alt"
+            ,"alt" ,"Z", "X", "C", "V", "B", "N", "M", "<" , ">", "?","alt", "\n",
+            "spc"
     ));
     
     public static Map<KeyCode, int[]> keyMapping = new HashMap(); 
@@ -71,11 +73,15 @@ public class App extends Application {
         GridPane pressedKeyLayer = new GridPane();
         GridPane keyBoardLayer = new GridPane();     
         
+        formatLayers(instructionLayer);
+        formatLayers(pressedKeyLayer);
+        
         fillKeyboard(keys, keyBoardLayer);
         
         sampleTextSection.getChildren().add(markerLayer);
         sampleTextSection.getChildren().add(lettersLayer);
         
+        Rectangle pressedMarker = new Rectangle(30, 30);
         virtualKeyBoardSection.getChildren().add(instructionLayer);
         virtualKeyBoardSection.getChildren().add(pressedKeyLayer);
         virtualKeyBoardSection.getChildren().add(keyBoardLayer);
@@ -135,6 +141,7 @@ public class App extends Application {
         keyMapping.put(KeyCode.COMMA, new int[]{8, 3});
         keyMapping.put(KeyCode.PERIOD, new int[]{9, 3});
         keyMapping.put(KeyCode.SLASH, new int[]{10, 3});
+        keyMapping.put(KeyCode.SPACE, new int[]{0, 4});
         
         charMapping.put("1", new int[]{0, 0});
         charMapping.put("2", new int[]{1, 0});
@@ -183,6 +190,7 @@ public class App extends Application {
         charMapping.put(".", new int[]{9, 3});
         charMapping.put("/", new int[]{10, 3});
         
+        charMapping.put(" ", new int[]{0, 4});
 
         charMapping.put("!", new int[]{0, 0});
         charMapping.put("@", new int[]{1, 0});
@@ -227,16 +235,34 @@ public class App extends Application {
         charMapping.put("<", new int[]{8, 3});
         charMapping.put(">", new int[]{9, 3});
         charMapping.put("?", new int[]{10, 3});
+        
+        
+        
+        
         scene.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.SHIFT) {
+            KeyCode pressedKey = event.getCode();
+
+            if (pressedKey == KeyCode.SHIFT) {
                 updateKeyboard(shiftKeys, keyBoardLayer);
             }
-        }); 
+
+            int[] position = keyMapping.get(pressedKey);
+
+            if (position != null) {
+                pressedKeyLayer.add(
+                    pressedMarker,
+                    position[0],
+                    position[1]
+                );
+            }
+        });
         
         scene.setOnKeyReleased(event -> {
             if (event.getCode() == KeyCode.SHIFT) {
                 updateKeyboard(keys, keyBoardLayer);
             }
+            
+            pressedKeyLayer.getChildren().clear();
         }); 
         
         
@@ -261,7 +287,7 @@ public class App extends Application {
             GridPane.setHalignment(label, HPos.CENTER);
             GridPane.setValignment(label, VPos.CENTER);
             
-            letters.add(new Label(txt.substring(i, i + 1)), column, row);
+            letters.add(label, column, row);
             
             column++;
         }
@@ -274,7 +300,7 @@ public class App extends Application {
             gridPane.getColumnConstraints().add(column);
         }
         
-        for (int i = 0; i < (textToType.length() / 20); i++) {
+        for (int i = 0; i < 5; i++) {
             RowConstraints row = new RowConstraints(30);
             row.setValignment(VPos.CENTER);
             gridPane.getRowConstraints().add(row);
@@ -307,11 +333,11 @@ public class App extends Application {
     
    public static void fillKeyboard(List<String> keyBoard, GridPane keyBoardLayer) {
     for (int i = 0; i < 12; i++) {
-        ColumnConstraints column = new ColumnConstraints(30, 30, 999);
+        ColumnConstraints column = new ColumnConstraints(30, 30, 30);
         keyBoardLayer.getColumnConstraints().add(column);
     }
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         RowConstraints row = new RowConstraints(30, 30, 30);
         keyBoardLayer.getRowConstraints().add(row);
     }
