@@ -28,7 +28,7 @@ public class App extends Application {
     public static String textToType = "";
     
     public static List<String> keys = new ArrayList<>(List.of(
-            "1","2","3","4","5", "6", "7", "8", "9", "0", "\n"
+            "`","1","2","3","4","5", "6", "7", "8", "9", "0", "<-","\n"
             ,"tab" , "q", "w", "e", "r", "t", "y", "u", "i" , "o", "p","tab" ,"\n"
             ,"shift", "a", "s", "d", "f", "g", "h", "j", "k" , "l", ";","shift" ,"\n"
             ,"alt" , "z", "x", "c", "v", "b", "n", "m", "," , ".", "/","alt" ,"\n",
@@ -36,7 +36,7 @@ public class App extends Application {
     ));
     
     public static List<String> shiftKeys = new ArrayList<>(List.of(
-            "!","@","#","$","%", "^", "&", "*", "(", ")", "\n"
+            "~" ,"!","@","#","$","%", "^", "&", "*", "(", ")", "<-","\n"
             ,"tab" , "Q", "W", "E", "R", "T", "Y", "U", "I" , "O", "P","tab" ,"\n"
             ,"shift" , "A", "S", "D", "F", "G", "H", "J", "K" , "L", ":","shift" ,"\n"
             ,"alt" ,"Z", "X", "C", "V", "B", "N", "M", "<" , ">", "?","alt", "\n",
@@ -94,17 +94,19 @@ public class App extends Application {
         Scene scene = new Scene(root, 640, 480);
         
         
+        keyMapping.put(KeyCode.BACK_QUOTE, new int[]{0, 0});
+        keyMapping.put(KeyCode.DIGIT1, new int[]{1, 0});
+        keyMapping.put(KeyCode.DIGIT2, new int[]{2, 0});
+        keyMapping.put(KeyCode.DIGIT3, new int[]{3, 0});
+        keyMapping.put(KeyCode.DIGIT4, new int[]{4, 0});
+        keyMapping.put(KeyCode.DIGIT5, new int[]{5, 0});
+        keyMapping.put(KeyCode.DIGIT6, new int[]{6, 0});
+        keyMapping.put(KeyCode.DIGIT7, new int[]{7, 0});
+        keyMapping.put(KeyCode.DIGIT8, new int[]{8, 0});
+        keyMapping.put(KeyCode.DIGIT9, new int[]{9, 0});
+        keyMapping.put(KeyCode.DIGIT0, new int[]{10, 0});
+        keyMapping.put(KeyCode.BACK_SPACE, new int[]{11, 0});
         
-        keyMapping.put(KeyCode.DIGIT1, new int[]{0, 0});
-        keyMapping.put(KeyCode.DIGIT2, new int[]{1, 0});
-        keyMapping.put(KeyCode.DIGIT3, new int[]{2, 0});
-        keyMapping.put(KeyCode.DIGIT4, new int[]{3, 0});
-        keyMapping.put(KeyCode.DIGIT5, new int[]{4, 0});
-        keyMapping.put(KeyCode.DIGIT6, new int[]{5, 0});
-        keyMapping.put(KeyCode.DIGIT7, new int[]{6, 0});
-        keyMapping.put(KeyCode.DIGIT8, new int[]{7, 0});
-        keyMapping.put(KeyCode.DIGIT9, new int[]{8, 0});
-        keyMapping.put(KeyCode.DIGIT0, new int[]{9, 0});
         
         keyMapping.put(KeyCode.TAB, new int[]{0, 1});
         keyMapping.put(KeyCode.Q, new int[]{1, 1});
@@ -143,16 +145,17 @@ public class App extends Application {
         keyMapping.put(KeyCode.SLASH, new int[]{10, 3});
         keyMapping.put(KeyCode.SPACE, new int[]{0, 4});
         
-        charMapping.put("1", new int[]{0, 0});
-        charMapping.put("2", new int[]{1, 0});
-        charMapping.put("3", new int[]{2, 0});
-        charMapping.put("4", new int[]{3, 0});
-        charMapping.put("5", new int[]{4, 0});
-        charMapping.put("6", new int[]{5, 0});
-        charMapping.put("7", new int[]{6, 0});
-        charMapping.put("8", new int[]{7, 0});
-        charMapping.put("9", new int[]{8, 0});
-        charMapping.put("0", new int[]{9, 0});
+        charMapping.put("`", new int[]{0, 0});
+        charMapping.put("1", new int[]{1, 0});
+        charMapping.put("2", new int[]{2, 0});
+        charMapping.put("3", new int[]{3, 0});
+        charMapping.put("4", new int[]{4, 0});
+        charMapping.put("5", new int[]{5, 0});
+        charMapping.put("6", new int[]{6, 0});
+        charMapping.put("7", new int[]{7, 0});
+        charMapping.put("8", new int[]{8, 0});
+        charMapping.put("9", new int[]{9, 0});
+        charMapping.put("0", new int[]{10, 0});
 
         charMapping.put("tab", new int[]{0, 1});
         charMapping.put("q", new int[]{1, 1});
@@ -192,16 +195,17 @@ public class App extends Application {
         
         charMapping.put(" ", new int[]{0, 4});
 
-        charMapping.put("!", new int[]{0, 0});
-        charMapping.put("@", new int[]{1, 0});
-        charMapping.put("#", new int[]{2, 0});
-        charMapping.put("$", new int[]{3, 0});
-        charMapping.put("%", new int[]{4, 0});
-        charMapping.put("^", new int[]{5, 0});
-        charMapping.put("&", new int[]{6, 0});
-        charMapping.put("*", new int[]{7, 0});
-        charMapping.put("(", new int[]{8, 0});
-        charMapping.put(")", new int[]{9, 0});
+        charMapping.put("~", new int[]{0, 0});
+        charMapping.put("!", new int[]{1, 0});
+        charMapping.put("@", new int[]{2, 0});
+        charMapping.put("#", new int[]{3, 0});
+        charMapping.put("$", new int[]{4, 0});
+        charMapping.put("%", new int[]{5, 0});
+        charMapping.put("^", new int[]{6, 0});
+        charMapping.put("&", new int[]{7, 0});
+        charMapping.put("*", new int[]{8, 0});
+        charMapping.put("(", new int[]{9, 0});
+        charMapping.put(")", new int[]{10, 0});
 
         charMapping.put("Q", new int[]{1, 1});
         charMapping.put("W", new int[]{2, 1});
