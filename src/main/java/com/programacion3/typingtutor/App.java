@@ -3,7 +3,9 @@ package com.programacion3.typingtutor;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -96,6 +98,11 @@ public class App extends Application {
                 column = 0;
             }            
             
+            Label label = new Label(txt.substring(i, i + 1));
+            
+            GridPane.setHalignment(label, HPos.CENTER);
+            GridPane.setValignment(label, VPos.CENTER);
+            
             letters.add(new Label(txt.substring(i, i + 1)), column, row);
             
             column++;
@@ -105,41 +112,48 @@ public class App extends Application {
     public static void formatLayers(GridPane gridPane) {
         for (int i = 0; i < 20; i++) {
             ColumnConstraints column = new ColumnConstraints(30);
+            column.setHalignment(HPos.CENTER);
             gridPane.getColumnConstraints().add(column);
         }
         
         for (int i = 0; i < (textToType.length() / 20); i++) {
             RowConstraints row = new RowConstraints(30);
+            row.setValignment(VPos.CENTER);
             gridPane.getRowConstraints().add(row);
         }
     }
     
-    public static void fillKeyboard(List<String> keyBoard, GridPane keyBoardLayer) {
-        for (int i = 0; i < 12; i++) {
-            ColumnConstraints column = new ColumnConstraints(30, 30, 999);
-            keyBoardLayer.getColumnConstraints().add(column);
-        }
-        
-        for (int i = 0; i < (textToType.length() / 20); i++) {
-            RowConstraints row = new RowConstraints(30, 30, 30);
-            keyBoardLayer.getRowConstraints().add(row);
-        }
-        
-        int row = 0;
-        int column = 0;
-        for (String key: keyBoard) {
-            if (key.equals("\n")){
-                row++;
-                column = 0;
-                
-                continue;
-            }
-            
-            keyBoardLayer.add(new Label(key), column, row);
-            
-            column++;
-        }
+   public static void fillKeyboard(List<String> keyBoard, GridPane keyBoardLayer) {
+    for (int i = 0; i < 12; i++) {
+        ColumnConstraints column = new ColumnConstraints(30, 30, 999);
+        keyBoardLayer.getColumnConstraints().add(column);
     }
+
+    for (int i = 0; i < 4; i++) {
+        RowConstraints row = new RowConstraints(30, 30, 30);
+        keyBoardLayer.getRowConstraints().add(row);
+    }
+
+    int row = 0;
+    int column = 0;
+
+    for (String key : keyBoard) {
+        if (key.equals("\n")) {
+            row++;
+            column = 0;
+            continue;
+        }
+
+        Label label = new Label(key);
+
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setValignment(label, VPos.CENTER);
+
+        keyBoardLayer.add(label, column, row);
+
+        column++;
+    }
+}
 
     public static void main(String[] args) {
         launch();
