@@ -43,6 +43,8 @@ public class App extends Application {
     
     public static Map<KeyCode, int[]> keyMapping = new HashMap(); 
     
+    public static Map<String, int[]> charMapping = new HashMap(); 
+    
     @Override
     public void start(Stage stage) {
         BorderPane root = new BorderPane();
@@ -97,6 +99,7 @@ public class App extends Application {
         keyMapping.put(KeyCode.DIGIT8, new int[]{7, 0});
         keyMapping.put(KeyCode.DIGIT9, new int[]{8, 0});
         keyMapping.put(KeyCode.DIGIT0, new int[]{9, 0});
+        
         keyMapping.put(KeyCode.TAB, new int[]{0, 1});
         keyMapping.put(KeyCode.Q, new int[]{1, 1});
         keyMapping.put(KeyCode.W, new int[]{2, 1});
@@ -108,6 +111,7 @@ public class App extends Application {
         keyMapping.put(KeyCode.I, new int[]{8, 1});
         keyMapping.put(KeyCode.O, new int[]{9, 1});
         keyMapping.put(KeyCode.P, new int[]{10, 1});
+        
         keyMapping.put(KeyCode.SHIFT, new int[]{0, 2});
         keyMapping.put(KeyCode.A, new int[]{1, 2});
         keyMapping.put(KeyCode.S, new int[]{2, 2});
@@ -118,6 +122,7 @@ public class App extends Application {
         keyMapping.put(KeyCode.J, new int[]{7, 2});
         keyMapping.put(KeyCode.K, new int[]{8, 2});
         keyMapping.put(KeyCode.L, new int[]{9, 2});
+        
         keyMapping.put(KeyCode.SEMICOLON, new int[]{10, 2});
         keyMapping.put(KeyCode.ALT, new int[]{0, 3});
         keyMapping.put(KeyCode.Z, new int[]{1, 3});
@@ -131,6 +136,97 @@ public class App extends Application {
         keyMapping.put(KeyCode.PERIOD, new int[]{9, 3});
         keyMapping.put(KeyCode.SLASH, new int[]{10, 3});
         
+        charMapping.put("1", new int[]{0, 0});
+        charMapping.put("2", new int[]{1, 0});
+        charMapping.put("3", new int[]{2, 0});
+        charMapping.put("4", new int[]{3, 0});
+        charMapping.put("5", new int[]{4, 0});
+        charMapping.put("6", new int[]{5, 0});
+        charMapping.put("7", new int[]{6, 0});
+        charMapping.put("8", new int[]{7, 0});
+        charMapping.put("9", new int[]{8, 0});
+        charMapping.put("0", new int[]{9, 0});
+
+        charMapping.put("tab", new int[]{0, 1});
+        charMapping.put("q", new int[]{1, 1});
+        charMapping.put("w", new int[]{2, 1});
+        charMapping.put("e", new int[]{3, 1});
+        charMapping.put("r", new int[]{4, 1});
+        charMapping.put("t", new int[]{5, 1});
+        charMapping.put("y", new int[]{6, 1});
+        charMapping.put("u", new int[]{7, 1});
+        charMapping.put("i", new int[]{8, 1});
+        charMapping.put("o", new int[]{9, 1});
+        charMapping.put("p", new int[]{10, 1});
+
+        charMapping.put("shift", new int[]{0, 2});
+        charMapping.put("a", new int[]{1, 2});
+        charMapping.put("s", new int[]{2, 2});
+        charMapping.put("d", new int[]{3, 2});
+        charMapping.put("f", new int[]{4, 2});
+        charMapping.put("g", new int[]{5, 2});
+        charMapping.put("h", new int[]{6, 2});
+        charMapping.put("j", new int[]{7, 2});
+        charMapping.put("k", new int[]{8, 2});
+        charMapping.put("l", new int[]{9, 2});
+        charMapping.put(";", new int[]{10, 2});
+
+        charMapping.put("alt", new int[]{0, 3});
+        charMapping.put("z", new int[]{1, 3});
+        charMapping.put("x", new int[]{2, 3});
+        charMapping.put("c", new int[]{3, 3});
+        charMapping.put("v", new int[]{4, 3});
+        charMapping.put("b", new int[]{5, 3});
+        charMapping.put("n", new int[]{6, 3});
+        charMapping.put("m", new int[]{7, 3});
+        charMapping.put(",", new int[]{8, 3});
+        charMapping.put(".", new int[]{9, 3});
+        charMapping.put("/", new int[]{10, 3});
+        
+
+        charMapping.put("!", new int[]{0, 0});
+        charMapping.put("@", new int[]{1, 0});
+        charMapping.put("#", new int[]{2, 0});
+        charMapping.put("$", new int[]{3, 0});
+        charMapping.put("%", new int[]{4, 0});
+        charMapping.put("^", new int[]{5, 0});
+        charMapping.put("&", new int[]{6, 0});
+        charMapping.put("*", new int[]{7, 0});
+        charMapping.put("(", new int[]{8, 0});
+        charMapping.put(")", new int[]{9, 0});
+
+        charMapping.put("Q", new int[]{1, 1});
+        charMapping.put("W", new int[]{2, 1});
+        charMapping.put("E", new int[]{3, 1});
+        charMapping.put("R", new int[]{4, 1});
+        charMapping.put("T", new int[]{5, 1});
+        charMapping.put("Y", new int[]{6, 1});
+        charMapping.put("U", new int[]{7, 1});
+        charMapping.put("I", new int[]{8, 1});
+        charMapping.put("O", new int[]{9, 1});
+        charMapping.put("P", new int[]{10, 1});
+
+        charMapping.put("A", new int[]{1, 2});
+        charMapping.put("S", new int[]{2, 2});
+        charMapping.put("D", new int[]{3, 2});
+        charMapping.put("F", new int[]{4, 2});
+        charMapping.put("G", new int[]{5, 2});
+        charMapping.put("H", new int[]{6, 2});
+        charMapping.put("J", new int[]{7, 2});
+        charMapping.put("K", new int[]{8, 2});
+        charMapping.put("L", new int[]{9, 2});
+        charMapping.put(":", new int[]{10, 2});
+
+        charMapping.put("Z", new int[]{1, 3});
+        charMapping.put("X", new int[]{2, 3});
+        charMapping.put("C", new int[]{3, 3});
+        charMapping.put("V", new int[]{4, 3});
+        charMapping.put("B", new int[]{5, 3});
+        charMapping.put("N", new int[]{6, 3});
+        charMapping.put("M", new int[]{7, 3});
+        charMapping.put("<", new int[]{8, 3});
+        charMapping.put(">", new int[]{9, 3});
+        charMapping.put("?", new int[]{10, 3});
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.SHIFT) {
                 updateKeyboard(shiftKeys, keyBoardLayer);
