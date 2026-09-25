@@ -27,30 +27,36 @@ public class App extends Application {
         
         TextToType textToType = new TextToType();
         VirtualKeyBoard virtualKeyBoard = new VirtualKeyBoard();
+        Output output = new Output();
          
         center.getChildren().add(textToType);
         center.getChildren().add(virtualKeyBoard);
+        center.getChildren().add(output);
         
         root.setTop(top);
         root.setCenter(center);
         
         root.setPadding(new Insets(20));
         Scene scene = new Scene(root, 640, 480);
-        
+        String css = getClass().getResource("style.css").toExternalForm();
+        scene.getStylesheets().add(css);
         
         scene.setOnKeyPressed(event -> {
             virtualKeyBoard.keyPressed(event.getCode());
             textToType.keyPressed(event.getCode());
+            output.keyPressed(event.getCode());
         });
         
         scene.setOnKeyTyped(event -> {
             textToType.keyTyped(event.getCharacter());
+            output.keyTyped(event.getCharacter());
         });
 
         
         scene.setOnKeyReleased(event -> {
             virtualKeyBoard.keyReleased(event.getCode());
         }); 
+        
         
         
         
