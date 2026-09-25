@@ -4,6 +4,9 @@
  */
 package com.programacion3.typingtutor;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;
@@ -19,7 +22,7 @@ import javafx.scene.shape.Rectangle;
  * @author ian
  */
 public class TextToType extends StackPane{
-    public static String text = "achu";
+    public static String text = "";
     public static int letterToType = 0;
     
     private GridPane lettersLayer = new GridPane();
@@ -34,6 +37,13 @@ public class TextToType extends StackPane{
         
         if (!text.isEmpty()) {
             updateMarkerPosition();
+        }
+        
+        try {
+            text = Files.readString(Path.of("src/main/resources/com/programacion3/typingtutor/typingText.txt"));
+        } catch (IOException e) {
+            System.err.println("FILE NOT LOADED< PANIC PANIC PANIC AAAAAAAAAAAAAAAAA" + e.getMessage());
+            text = "miau"; 
         }
         
         distributeText();
@@ -95,15 +105,16 @@ public class TextToType extends StackPane{
     }
     
     public static String getInstruction() {
-        if (letterToType < text.length()) {
-            return text.substring(letterToType , letterToType + 1);
-        } else if (letterToType < 0) {
-            letterToType = 0;
-            return getInstruction();
+        if (text == null || text.isEmpty()) {
+            return " ";
         }
-        
-        letterToType = text.length() - 1;
-        return getInstruction();
+
+        if (letterToType >= 0 && letterToType < text.length()) {
+            return text.substring(letterToType, letterToType + 1);
+        } 
+
+        letterToType = Math.max(0, Math.min(letterToType, text.length() - 1));
+        return text.substring(letterToType, letterToType + 1);
     }
     
     public void setText(String text) {
