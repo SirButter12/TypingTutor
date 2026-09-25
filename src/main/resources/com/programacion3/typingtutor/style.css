@@ -1,0 +1,18 @@
+.keyboard-key {
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #e0e0e0;
+    -fx-border-color: #a0a0a0;
+    -fx-border-width: 1px;
+    -fx-alignment: center;
+}
+
+.pressed-key {
+    -fx-fill: #707070;
+}
+
+.instruction-key {
+    -fx-fill: transparent;
+    -fx-stroke: #ff0000;
+    -fx-stroke-width: 2px;
+}
