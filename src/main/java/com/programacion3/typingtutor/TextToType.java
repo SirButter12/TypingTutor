@@ -19,8 +19,8 @@ import javafx.scene.shape.Rectangle;
  * @author ian
  */
 public class TextToType extends StackPane{
-    private static String text = "achu";
-    private static int letterToType = 0;
+    public static String text = "achu";
+    public static int letterToType = 0;
     
     private GridPane lettersLayer = new GridPane();
     private GridPane markerLayer = new GridPane();
@@ -135,7 +135,6 @@ public class TextToType extends StackPane{
             
             letterToType--;
             updateMarkerPosition();
-
-        }    
+        }
     }
 }
