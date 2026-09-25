@@ -6,6 +6,7 @@ package com.programacion3.typingtutor;
 
 import java.util.List;
 import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -20,9 +21,9 @@ import javafx.scene.shape.Rectangle;
  * @author ian
  */
 public class VirtualKeyBoard extends StackPane {
-    public GridPane instructionLayer = new GridPane();
-    public GridPane pressedKeyLayer = new GridPane();
-    public GridPane keyBoardLayer = new GridPane();    
+    private GridPane instructionLayer = new GridPane();
+    private GridPane pressedKeyLayer = new GridPane();
+    private GridPane keyBoardLayer = new GridPane();    
     Rectangle pressedMarker = new Rectangle(30, 30);
     Rectangle instructionMarker = new Rectangle(30, 30);
     
@@ -36,7 +37,8 @@ public class VirtualKeyBoard extends StackPane {
         formatLayer(keyBoardLayer);
         
         updateKeyboard(KeyBoardData.keys);
-            
+        updateInstruction();    
+        
         super.getChildren().add(instructionLayer);
         super.getChildren().add(pressedKeyLayer);
         super.getChildren().add(keyBoardLayer);
@@ -67,7 +69,9 @@ public class VirtualKeyBoard extends StackPane {
     }
     
     private void formatLayer(GridPane gridPane) {
-        for (int i = 0; i < 20; i++) {
+        gridPane.setAlignment(Pos.TOP_CENTER);
+        
+        for (int i = 0; i < 12; i++) {
             ColumnConstraints column = new ColumnConstraints(30, 30, 30);
             column.setHalignment(HPos.CENTER);
             gridPane.getColumnConstraints().add(column);
@@ -77,6 +81,18 @@ public class VirtualKeyBoard extends StackPane {
             RowConstraints row = new RowConstraints(30, 30, 30);
             row.setValignment(VPos.CENTER);
             gridPane.getRowConstraints().add(row);
+        }
+    }
+    
+    public void updateInstruction() {
+        instructionLayer.getChildren().clear();
+        String instruction = TextToType.getInstruction();
+        
+        if (KeyBoardData.characterMapping.keySet().contains(instruction)) {
+            instructionLayer.add(instructionMarker, KeyBoardData.characterMapping.get(instruction)[0], KeyBoardData.characterMapping.get(instruction)[1]);
+        } else if (KeyBoardData.shiftMapping.keySet().contains(instruction)) {
+            instructionLayer.add(new Rectangle(30 , 30), 0, 2);
+            instructionLayer.add(instructionMarker, KeyBoardData.shiftMapping.get(instruction)[0], KeyBoardData.shiftMapping.get(instruction)[1]);
         }
     }
     
@@ -96,6 +112,8 @@ public class VirtualKeyBoard extends StackPane {
                 position[1]
             );
         }
+        
+        
     }
     
     public void keyReleased(KeyCode key) {
@@ -103,6 +121,7 @@ public class VirtualKeyBoard extends StackPane {
                 updateKeyboard(KeyBoardData.keys);
             }
             
+        updateInstruction();
         pressedKeyLayer.getChildren().clear();
     }
 }
