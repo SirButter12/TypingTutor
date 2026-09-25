@@ -25,6 +25,11 @@ public class Output extends VBox{
     }
     
     public void keyTyped(String charTyped) {
+        if (TextToType.letterToType == TextToType.text.length()) {
+            endOfTheText();
+            return;
+        }
+        
         if (KeyBoardData.keys.contains(charTyped) || KeyBoardData.shiftKeys.contains(charTyped) || charTyped.equals(" ")) {  
             if (charsInLine > 48) {
                 typedStr = typedStr + "\n";
@@ -39,6 +44,7 @@ public class Output extends VBox{
             
             errorMessage.setText("");
         } 
+        
         else if (charTyped.equals("\b")) {
             errorMessage.setText("");
             return;    
@@ -62,6 +68,6 @@ public class Output extends VBox{
         int textLen = TextToType.getText().length();
         double grade = textLen / idk;
         super.getChildren().add(new Label(String.format("Congratulations! you wrote: %d characters\n"
-                + "from which %d were correct, you got a %.2f!", idk, textLen, grade)));
+                + "from which %d were correct, you got a %.2f!", idk, textLen, grade * 100)));
     }
 }
