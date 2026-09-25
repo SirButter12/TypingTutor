@@ -28,6 +28,9 @@ public class VirtualKeyBoard extends StackPane {
     Rectangle instructionMarker = new Rectangle(30, 30);
     
     public VirtualKeyBoard() {
+        pressedMarker.getStyleClass().add("pressed-key");
+        instructionMarker.getStyleClass().add("instruction-key");
+        
         createKeyBoard();
     }
     
@@ -39,9 +42,10 @@ public class VirtualKeyBoard extends StackPane {
         updateKeyboard(KeyBoardData.keys);
         updateInstruction();    
         
+        super.getChildren().add(keyBoardLayer);
         super.getChildren().add(instructionLayer);
         super.getChildren().add(pressedKeyLayer);
-        super.getChildren().add(keyBoardLayer);
+        
     }
     
     public void updateKeyboard(List<String> keyboard) {
@@ -58,6 +62,7 @@ public class VirtualKeyBoard extends StackPane {
             }
 
             Label label = new Label(key);
+            label.getStyleClass().add("keyboard-key");
 
             GridPane.setHalignment(label, HPos.CENTER);
             GridPane.setValignment(label, VPos.CENTER);
@@ -91,7 +96,11 @@ public class VirtualKeyBoard extends StackPane {
         if (KeyBoardData.characterMapping.keySet().contains(instruction)) {
             instructionLayer.add(instructionMarker, KeyBoardData.characterMapping.get(instruction)[0], KeyBoardData.characterMapping.get(instruction)[1]);
         } else if (KeyBoardData.shiftMapping.keySet().contains(instruction)) {
-            instructionLayer.add(new Rectangle(30 , 30), 0, 2);
+            
+            Rectangle shiftInstruction = new Rectangle(30, 30);
+            shiftInstruction.getStyleClass().add("instruction-key");
+            
+            instructionLayer.add(shiftInstruction, 0, 2);
             instructionLayer.add(instructionMarker, KeyBoardData.shiftMapping.get(instruction)[0], KeyBoardData.shiftMapping.get(instruction)[1]);
         }
     }
