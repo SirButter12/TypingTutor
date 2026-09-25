@@ -19,7 +19,7 @@ import javafx.scene.shape.Rectangle;
  * @author ian
  */
 public class TextToType extends StackPane{
-    private static String text = "2 y 2 son 4 4 y 2 son 6, 6 y 2 son 8, y 8 y 8 16";
+    private static String text = "achu";
     private static int letterToType = 0;
     
     private GridPane lettersLayer = new GridPane();
@@ -30,6 +30,7 @@ public class TextToType extends StackPane{
     public TextToType() {
         formatLayer(lettersLayer);
         formatLayer(markerLayer);
+        marker.getStyleClass().add("instruction-key");
         
         if (!text.isEmpty()) {
             updateMarkerPosition();
