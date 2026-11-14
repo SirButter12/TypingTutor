@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -65,11 +66,26 @@ public class App extends Application {
         lblCorrect.getStyleClass().add("stat-label");
         lblIncorrect.getStyleClass().add("stat-label");
         
+        btnNext = new Button("Next");
+        btnReset = new Button("Reset");
+        
+        btnNext.setFocusTraversable(false);
+        btnReset.setFocusTraversable(false);
+        
         HBox statsBox = new HBox();
+        HBox controlsBox = new HBox();
+        VBox topBox = new VBox();
         
         statsBox.getChildren().addAll(lblKeyCaption, lblKeyPressed, lblCorrect, lblIncorrect);
         statsBox.setSpacing(20);
         statsBox.setAlignment(Pos.CENTER);
+    
+        controlsBox.getChildren().addAll(btnNext, btnReset);
+        controlsBox.setSpacing(10);
+        controlsBox.setAlignment(Pos.CENTER);
+        
+        topBox.getChildren().addAll(lblTitle, lblCounter, txtTarget, txtTyped, statsBox, controlsBox);
+        
     }
     
 
