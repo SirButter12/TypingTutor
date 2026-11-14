@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import static javafx.scene.input.KeyCode.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -28,6 +29,22 @@ public class App extends Application {
         "Five big quacking zephyrs jolt my wax bed.",
         "Sympathizing would fix Quaker objectives.",
         "A large fawn jumped quickly over white zinc boxes."
+    };
+    
+    private static final String[][] KEY_LABELS = {
+        {"`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Backspace"},
+        {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\"},
+        {"A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Enter"},
+        {"Shift", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/"},
+        {"Space"}
+    };
+
+    private static final KeyCode[][] KEY_CODES = {
+        {BACK_QUOTE, DIGIT1, DIGIT2, DIGIT3, DIGIT4, DIGIT5, DIGIT6, DIGIT7, DIGIT8, DIGIT9, DIGIT0, MINUS, EQUALS, BACK_SPACE},
+        {Q, W, E, R, T, Y, U, I, O, P, OPEN_BRACKET, CLOSE_BRACKET, BACK_SLASH},
+        {A, S, D, F, G, H, J, K, L, SEMICOLON, QUOTE, ENTER},
+        {SHIFT, Z, X, C, V, B, N, M, COMMA, PERIOD, SLASH},
+        {SPACE}
     };
     
     TextField txtTarget, txtTyped;
