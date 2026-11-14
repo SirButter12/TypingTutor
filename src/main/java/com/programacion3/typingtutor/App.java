@@ -3,6 +3,7 @@ package com.programacion3.typingtutor;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -103,6 +104,14 @@ public class App extends Application {
         
         topBox.getChildren().addAll(lblTitle, lblCounter, txtTarget, txtTyped, statsBox, controlsBox);
         
+        VBox keyBoardBox = new VBox();
+        keyBoardBox.setSpacing(5);
+        keyBoardBox.setAlignment(Pos.CENTER);
+        keyBoardBox.setPadding(new Insets(10));
+        
+        for(int r = 0; r < KEY_LABELS.length; r++) {
+            keyBoardBox.getChildren().add(createKeyRow(KEY_LABELS[r], KEY_CODES[r]));
+        }
     }
     
     private HBox createKeyRow(String[] labels, KeyCode[] codes) {
