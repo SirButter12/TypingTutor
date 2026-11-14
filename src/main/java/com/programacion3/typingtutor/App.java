@@ -123,6 +123,8 @@ public class App extends Application {
         root.setPadding(new Insets(20));
         BorderPane.setMargin(keyBoardBox, new Insets(20, 0, 0, 0));
         
+        loadText(0);
+        
         Scene scene = new Scene(root, 900, 600);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         
