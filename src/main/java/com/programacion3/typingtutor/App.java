@@ -53,8 +53,17 @@ public class App extends Application {
         txtTyped.getStyleClass().add("text-display");
         txtTyped.setPrefWidth(700);
         
+        lblKeyCaption = new Label("Key pressed:");
+        lblKeyPressed = new Label("-");
+        lblKeyPressed.getStyleClass().add("status-ok");
         
+        lblCorrect = new Label("Correct: 0");
+        lblIncorrect = new Label("Incorrect: 0");
+        
+        lblCorrect.getStyleClass().add("stat-label");
+        lblIncorrect.getStyleClass().add("stat-label");
     }
+    
 
     public static void main(String[] args) {
         launch();
