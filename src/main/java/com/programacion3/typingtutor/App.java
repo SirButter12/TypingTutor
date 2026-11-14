@@ -107,6 +107,7 @@ public class App extends Application {
     
     private HBox createKeyRow(String[] labels, KeyCode[] codes) {
         HBox row = new HBox(5);
+        row.setAlignment(Pos.CENTER);
         
         for (int i = 0; i < labels.length; i++) {
             Button key = new Button(labels[i]);
@@ -124,7 +125,7 @@ public class App extends Application {
                     key.getStyleClass().add("key-space");
                 break;
                 default:
-                continue;    
+                break;    
             }
             
             row.getChildren().add(key);
