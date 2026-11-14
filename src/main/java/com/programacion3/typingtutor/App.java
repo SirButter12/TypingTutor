@@ -153,6 +153,14 @@ public class App extends Application {
         }
     }
     
+    private void handleKeyReleased(KeyEvent e) {
+        Button key = keyMap.get(e.getCode());
+
+        if (key != null) {
+            key.getStyleClass().remove("key-pressed");
+        }
+    }
+    
     private HBox createKeyRow(String[] labels, KeyCode[] codes) {
         HBox row = new HBox(5);
         row.setAlignment(Pos.CENTER);
