@@ -133,7 +133,11 @@ public class App extends Application {
     private void handleKeyPressed(KeyEvent e) {
         KeyCode code = e.getCode();
 
-        // Backspace handling (to be implemented)
+        if (code == KeyCode.BACK_SPACE && txtTyped.getLength() > 0) {
+            String typed = txtTyped.getText();
+            txtTyped.setText(typed.substring(0, typed.length() - 1));
+            updateErrorIndicator();
+        }
 
         Button key = keyMap.get(code);
 
