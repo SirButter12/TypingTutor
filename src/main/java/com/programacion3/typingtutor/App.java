@@ -105,6 +105,33 @@ public class App extends Application {
         
     }
     
+    private HBox createKeyRow(String[] labels, KeyCode[] codes) {
+        HBox row = new HBox(5);
+        
+        for (int i = 0; i < labels.length; i++) {
+            Button key = new Button(labels[i]);
+            key.getStyleClass().add("key");
+            key.setFocusTraversable(false);
+            keyMap.put(codes[i], key);
+            
+            switch(codes[i]) {
+                case BACK_SPACE:
+                case ENTER:
+                case SHIFT:    
+                    key.getStyleClass().add("key-wide");
+                break;
+                case SPACE:
+                    key.getStyleClass().add("key-space");
+                break;
+                default:
+                continue;    
+            }
+            
+            row.getChildren().add(key);
+        }
+        
+        return row;
+    } 
 
     public static void main(String[] args) {
         launch();
