@@ -132,18 +132,25 @@ public class App extends Application {
     
     private void handleKeyPressed(KeyEvent e) {
         KeyCode code = e.getCode();
-        
-        //Backspace hadling (to be implemented)
-        
+
+        // Backspace handling (to be implemented)
+
         Button key = keyMap.get(code);
-        
+
         if (key != null) {
             if (!key.getStyleClass().contains("key-pressed")) {
-                key.getStyleClass().add("key-pressed");           
-            } 
+                key.getStyleClass().add("key-pressed");
+            }
+
+            lblKeyPressed.setText(key.getText());
+            lblKeyPressed.getStyleClass().removeAll("status-error", "status-ok");
+            lblKeyPressed.getStyleClass().add("status-ok");
+
         } else {
-            //to be implemented
-        }    
+            lblKeyPressed.setText("Not handled");
+            lblKeyPressed.getStyleClass().removeAll("status-error", "status-ok");
+            lblKeyPressed.getStyleClass().add("status-error");
+        }
     }
     
     private HBox createKeyRow(String[] labels, KeyCode[] codes) {
