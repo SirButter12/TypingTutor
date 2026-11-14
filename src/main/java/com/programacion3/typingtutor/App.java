@@ -1,8 +1,13 @@
 package com.programacion3.typingtutor;
 
+import java.util.HashMap;
+import java.util.Map;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -22,8 +27,21 @@ public class App extends Application {
         "A large fawn jumped quickly over white zinc boxes."
     };
     
+    TextField txtTarget, txtTyped;
+    Label lblTitle, lblCounter, lblKeyCaption, lblKeyPressed, lblCorrect, lblIncorrect;
+    Button btnNext, btnReset;
+    Map<KeyCode, Button> keyMap = new HashMap<>();
+    int currentIndex = 0, correctCount = 0, incorrectCount = 0;
+    
     @Override
     public void start(Stage stage) {
+        lblTitle = new Label("TypingTutor");
+        lblTitle.getStyleClass().add("title-label");
+        
+        lblCounter = new Label("1 of 6");
+        lblCounter.getStyleClass().add("counter-label");
+        
+        
         
     }
 
