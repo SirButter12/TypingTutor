@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import static javafx.scene.input.KeyCode.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -127,6 +128,22 @@ public class App extends Application {
         stage.setTitle("Typing Tutor");
         stage.setScene(scene);
         stage.show();
+    }
+    
+    private void handleKeyPressed(KeyEvent e) {
+        KeyCode code = e.getCode();
+        
+        //Backspace hadling (to be implemented)
+        
+        Button key = keyMap.get(code);
+        
+        if (key != null) {
+            if (!key.getStyleClass().contains("key-pressed")) {
+                key.getStyleClass().add("key-pressed");           
+            } 
+        } else {
+            //to be implemented
+        }    
     }
     
     private HBox createKeyRow(String[] labels, KeyCode[] codes) {
