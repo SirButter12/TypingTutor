@@ -47,6 +47,11 @@ public class App extends Application {
         txtTarget.getStyleClass().add("text-display");
         txtTarget.setPrefWidth(700);
      
+        txtTyped = new TextField();
+        txtTyped.setEditable(false);
+        txtTyped.setFocusTraversable(false);
+        txtTyped.getStyleClass().add("text-display");
+        txtTyped.setPrefWidth(700);
         
         
     }
