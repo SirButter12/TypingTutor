@@ -124,6 +124,7 @@ public class App extends Application {
         BorderPane.setMargin(keyBoardBox, new Insets(20, 0, 0, 0));
         
         loadText(0);
+        btnNext.setOnAction(e -> loadText(currentIndex + 1));
         
         Scene scene = new Scene(root, 900, 600);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
