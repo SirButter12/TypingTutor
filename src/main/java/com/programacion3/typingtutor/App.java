@@ -196,6 +196,18 @@ public class App extends Application {
     }
 
    
+    private void loadText(int index) {
+        currentIndex = index;
+
+        txtTarget.setText(SAMPLE_TEXTS[index]);
+        txtTyped.clear();
+        txtTyped.getStyleClass().remove("typed-error");
+
+        lblCounter.setText((index + 1) + " of " + SAMPLE_TEXTS.length);
+
+        btnNext.setDisable(index == SAMPLE_TEXTS.length - 1);
+    }
+    
     private void updateStats() {
         lblCorrect.setText("Correct: " + correctCount);
         lblIncorrect.setText("Incorrect: " + incorrectCount);
