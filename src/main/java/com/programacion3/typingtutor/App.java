@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import static javafx.scene.input.KeyCode.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -90,6 +91,8 @@ public class App extends Application {
         btnNext.setFocusTraversable(false);
         btnReset.setFocusTraversable(false);
         
+        BorderPane root = new BorderPane();
+        
         HBox statsBox = new HBox();
         HBox controlsBox = new HBox();
         VBox topBox = new VBox();
@@ -112,6 +115,14 @@ public class App extends Application {
         for(int r = 0; r < KEY_LABELS.length; r++) {
             keyBoardBox.getChildren().add(createKeyRow(KEY_LABELS[r], KEY_CODES[r]));
         }
+        
+        root.setTop(topBox);
+        root.setCenter(keyBoardBox);
+        
+        root.setPadding(new Insets(20));
+        BorderPane.setMargin(keyBoardBox, new Insets(20, 0, 0, 0));
+        
+        
     }
     
     private HBox createKeyRow(String[] labels, KeyCode[] codes) {
