@@ -125,9 +125,16 @@ public class App extends Application {
         
         Scene scene = new Scene(root, 900, 600);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, this::handleKeyPressed);
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, this::handleKeyReleased);
+        scene.addEventFilter(KeyEvent.KEY_TYPED, this::handleKeyTyped);
+        
         stage.setTitle("Typing Tutor");
         stage.setScene(scene);
         stage.show();
+        
+        root.requestFocus();
     }
     
     private void handleKeyPressed(KeyEvent e) {
