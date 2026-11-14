@@ -161,6 +161,44 @@ public class App extends Application {
         }
     }
     
+    private void handleKeyTyped(KeyEvent e) {
+        String ch = e.getCharacter();
+
+        if (ch.isEmpty() || ch.charAt(0) < 32 || ch.charAt(0) == 127) {
+            return;
+        }
+
+        if (txtTyped.getLength() >= txtTarget.getLength()) {
+           return;
+        }
+
+        char expected = txtTarget.getText().charAt(txtTyped.getLength());
+        if (ch.charAt(0) == expected) {
+           correctCount++;
+        } else {
+            incorrectCount++;
+        }
+
+        txtTyped.appendText(ch);
+         updateStats();
+        updateErrorIndicator();
+    }
+
+   
+    private void updateStats() {
+        lblCorrect.setText("Correct: " + correctCount);
+        lblIncorrect.setText("Incorrect: " + incorrectCount);
+    }
+
+    private void updateErrorIndicator() {
+        boolean hasError = !txtTarget.getText().startsWith(txtTyped.getText());
+ 
+        txtTyped.getStyleClass().remove("typed-error");
+        if (hasError) {
+            txtTyped.getStyleClass().add("typed-error");
+        }
+    }
+    
     private HBox createKeyRow(String[] labels, KeyCode[] codes) {
         HBox row = new HBox(5);
         row.setAlignment(Pos.CENTER);
