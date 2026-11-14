@@ -3,11 +3,13 @@ package com.programacion3.typingtutor;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -62,6 +64,12 @@ public class App extends Application {
         
         lblCorrect.getStyleClass().add("stat-label");
         lblIncorrect.getStyleClass().add("stat-label");
+        
+        HBox statsBox = new HBox();
+        
+        statsBox.getChildren().addAll(lblKeyCaption, lblKeyPressed, lblCorrect, lblIncorrect);
+        statsBox.setSpacing(20);
+        statsBox.setAlignment(Pos.CENTER);
     }
     
 
