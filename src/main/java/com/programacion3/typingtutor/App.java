@@ -41,6 +41,12 @@ public class App extends Application {
         lblCounter = new Label("1 of 6");
         lblCounter.getStyleClass().add("counter-label");
         
+        txtTarget = new TextField();
+        txtTarget.setEditable(false);
+        txtTarget.setFocusTraversable(false);
+        txtTarget.getStyleClass().add("text-display");
+        txtTarget.setPrefWidth(700);
+     
         
         
     }
